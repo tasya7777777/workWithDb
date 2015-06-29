@@ -54,10 +54,21 @@ select {
 	cursor:pointer;
 	padding-right:6px;
 }
-input:nth-child(15), input:nth-child(16){
+input:nth-last-child(-n+2){
 	width: 100px;
 	height: 25px;
+	box-shadow: 6px 6px 5px #888888;
+	border:1px solid #4f4f4f;
+	border-radius: 5px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
 }
 p {
 	margin: 2px;
+}
+input {
+	border-radius: 5px;
+	width: 130px;
 }

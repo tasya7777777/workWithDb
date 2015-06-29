@@ -82,7 +82,7 @@
 </div>
     <div id="greyBack" class="greyBackclass"></div>
 	<div id="popup" class="popupclass">
-		<div id="popup_bar" class="popupbarclass" ><span id="btn_close" class="bntcloseclass">[X]</span></div>
+		<div id="popup_bar" class="popupbarclass" ><span id="btn_close" class="bntcloseclass"><img src='pictures/close.png' width='20px'/></span></div>
 		<form action="test.php" method="POST">
 			<p>Name:</p><input type="text" id="user_name" name="user_name">
 			<p>Login:</p><input type="text" id="user_login" name="login">

@@ -48,7 +48,7 @@ function edit_modall(action, user, u_id){
 	// greyBack
     spreadgreyBack(true);
     // reset div position
-   	popup.style.width = "500px";
+   	popup.style.width = "400px";
     popup.style.height = "350px";
 	popup.style.display = "block";
 	popup.style.position = 'absolute';

@@ -85,9 +85,4 @@ $insGoods = "INSERT INTO goods (id_user, tema, meil, Statys_m) VALUES(5,'About',
 																	 (13,'Tricky','mouse',4),
 																	 (14,'Good','time',5)"; 
 mysql_query($insGoods);
-/*SELECT name, login, goods.id as order_id, 
-goods.tema, goods.meil, t_sprav.Text_values 
-FROM userlist ul 
-JOIN goods on ul.id_u=goods.id_user
-JOIN t_sprav on t_sprav.id=goods.Statys_m*/
 ?>

@@ -10,6 +10,7 @@
 	<script src="js/modal.js"></script>
 </head>
 <body>
+<div>
 <?php 
 	$sql = "SELECT ul.name, login, rl.name as city, rl2.name as region, rl3.name as distinctt, goods.id, goods.tema, goods.meil, t_sprav.Text_values 
 	FROM userlist ul JOIN goods on ul.id_u=goods.id_user 
@@ -74,9 +75,19 @@
 	?>
 </div>
     <div id="greyBack" class="greyBackclass"></div>
-		<div id="popup" class="popupclass">
-			<div id="popup_bar" class="popupbarclass" >Title<span id="btn_close" class="bntcloseclass">[X]</span></div>
-			<p>Popup Window.<br>Press ESC to close.</p>
-		</div>
+	<div id="popup" class="popupclass">
+		<div id="popup_bar" class="popupbarclass" >Edit record<span id="btn_close" class="bntcloseclass">[X]</span></div>
+		<form action="" method="POST">
+			<p>Name:</p><input type="text" name="user_name">
+			<p>Login:</p><input type="text" name="login">
+			<p>Password:</p><input type="text" name="pass">
+			<p>City:</p><input type="text" name="city">
+			<p>Region:</p><input type="text" name="region">
+			<p>Distinct:</p><input type="text" name="dist"><br /><br />
+			<input type="submit" name="button_change" value="Save">
+			<input type="button" name="cansel" value="Cansel">
+		</form>
+	</div>
+</div>
 </body>
 </html>

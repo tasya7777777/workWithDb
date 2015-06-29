@@ -9,7 +9,7 @@ function edit_modall(){
     spreadgreyBack(true);
     // reset div position
    	popup.style.width = "500px";
-    popup.style.height = "300px";
+    popup.style.height = "330px";
 	popup.style.display = "block";
 	popup.style.position = 'absolute';
 	popup.style.left= "40%";

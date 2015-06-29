@@ -28,6 +28,7 @@ select {
 	background: -moz-linear-gradient(#fff, #999);
 	background: -webkit-linear-gradient(#fff, #999);
 	background: -o-linear-gradient(#fff, #999);
+	text-align:center;
 }
 .greyBackclass{
 	display:none;
@@ -46,10 +47,17 @@ select {
 	border-radius:6px 6px 0 0;
 	text-align:center;
 	height:24px;
-	cursor:move
+	cursor:move;
 }
 .bntcloseclass{
 	float:right;
 	cursor:pointer;
 	padding-right:6px;
+}
+input:nth-child(15){
+	width: 110px;
+	height: 30px;
+}
+p {
+	margin: 2px;
 }

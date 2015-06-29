@@ -105,8 +105,8 @@ function drag(ev) {
 		while($user = mysql_fetch_assoc($query_users)){	
 			echo "<tr>
 					<td class='picture'>
-						<img id='change_id' src='pictures/change.gif'>
-						<img id='add_id' src='pictures/plus.gif'>
+						<img id='change_id".$count."' src='pictures/change.gif' onclick='edit_modall()'>
+						<img id='add_id".$count."' src='pictures/plus.gif' onclick='edit_modall()'>
 						<a href='".$_SERVER['PHP_SELF']."?dell_user=".$user['id_u']."'onclick=\"if(!confirm('Запис буде видалено!')){return false;}\">
 							<img src='pictures/del.gif'>
 						</a>

@@ -1,8 +1,11 @@
-function edit_modall(action, user){
+function edit_modall(action, user, u_id){
+
 	var popup = document.getElementById("popup");
 	var popup_bar = document.getElementById("popup_bar");
 	var btn_close = document.getElementById("btn_close");
 	var greyBack = document.getElementById("greyBack");
+	var user_id = document.getElementById("user_id");
+	user_id.value = u_id;
 	if(popup_bar.childNodes[1]){
 			popup_bar.removeChild(popup_bar.childNodes[1]);
 		 }

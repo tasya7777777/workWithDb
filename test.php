@@ -43,12 +43,13 @@
 <br />
 <div><h2>TABLE USERS</h2>
 	<?php
-		print_r($_POST);
+		
 		if(isset($_GET['dell_user']) && !empty($_GET['dell_user'])){
 			$sql = "DELETE FROM userlist WHERE id_u=".$_GET['dell_user'];
 			mysql_query($sql);
-		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] = 'Edit record') && !empty($_POST['action'])){
-			
+		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] = 'Edit record')){
+			$sql = "UPDATE userlist set name = \"".$_POST['user_name']."\", login =\"".$_POST['login']."\", pass =\"".$_POST['pass']."\", city=3 where id_u =".$_POST['user_id'];
+			mysql_query($sql);
 		}
 		$sql = "SELECT id_u, ul.name, login, pass, rl.name as city, rl2.name as region, rl3.name as distinctt FROM userlist ul
 		JOIN region_list rl on ul.city=rl.id 
@@ -61,7 +62,7 @@
 		while($user = mysql_fetch_assoc($query_users)){	
 			echo "<tr>
 					<td class='picture'>
-						<img id='change_id".$count."' src='pictures/change.gif' onclick='edit_modall(\"change\", "; echo json_encode($user); echo ")'>
+						<img id='change_id".$count."' src='pictures/change.gif' onclick='edit_modall(\"change\", "; echo json_encode($user); echo ",".$user['id_u'].")'>
 						<img id='add_id".$count."' src='pictures/plus.gif' onclick='edit_modall(\"add\")'>
 						<a href='".$_SERVER['PHP_SELF']."?dell_user=".$user['id_u']."'onclick=\"if(!confirm('Запис буде видалено!')){return false;}\">
 							<img src='pictures/del.gif'>
@@ -90,6 +91,7 @@
 			<p>Region:</p><input type="text" id="user_region" name="region">
 			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />
 			<input type="hidden" id="hidden_action" name="hidden_action" value=""/>
+			<input type="hidden" id="user_id" name="user_id" value=""/>
 			<input type="submit" name="button_change" value="Save" onclick="save_editing()">
 			<input type="button" name="cancel" value="Cancel" onclick="cancel_editing()">
 		</form>

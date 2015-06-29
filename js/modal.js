@@ -97,17 +97,29 @@ function spreadgreyBack(flg){
 	popup.style.display = "none";
 	greyBack.style.display = "none"; 
 }
- 
- function save_record(){
-	 
-	 var popup_bar = document.getElementById("popup_bar");
-	 if(popup_bar.childNodes[1].nodeValue == "Edit record"){
-		 console.log("update ajax");
-	 }else{
-		  console.log("insert ajax");
-	 }
-	 
-	
-	
- }
+
+ $("document").ready(function(){
+	  $(".submit_save").submit(function(){
+		var popup_bar = document.getElementById("popup_bar");
+		var data = {
+		  "action": popup_bar.childNodes[1].nodeValue
+		};
+		data = $(this).serialize() + "&" + $.param(data);
+		alert(data);
+		$.ajax({
+		  type: "POST",
+		  url: "test.php", 
+		  data: data,
+		  cache:false,
+		  dataType: "json",
+		  success: function(data) {
+		  alert("success");
+			}, 
+		  error: function(data){
+			alert('error');
+		  }
+		});
+		return false;
+	  });
+	});
  

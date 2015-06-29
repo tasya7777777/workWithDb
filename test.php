@@ -7,7 +7,9 @@
 	<title>Table</title>
 	<meta charset="utf-8"/>
 	<link href="css/style.css" rel="stylesheet" type="text/css"/>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="js/modal.js"></script>
+	
 </head>
 <body>
 <div>
@@ -77,14 +79,14 @@
     <div id="greyBack" class="greyBackclass"></div>
 	<div id="popup" class="popupclass">
 		<div id="popup_bar" class="popupbarclass" ><span id="btn_close" class="bntcloseclass">[X]</span></div>
-		<form action="" method="POST">
+		<form action="test.php" method="POST" class="submit_save">
 			<p>Name:</p><input type="text" id="user_name" name="user_name">
 			<p>Login:</p><input type="text" id="user_login" name="login">
 			<p>Password:</p><input type="text" id="user_pass" name="pass">
 			<p>City:</p><input type="text" id="user_city" name="city">
 			<p>Region:</p><input type="text" id="user_region" name="region">
 			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />
-			<input type="submit" name="button_change" value="Save" onclick="save_record()">
+			<input type="submit" name="button_change" value="Save">
 			<input type="button" name="cancel" value="Cancel" onclick="cancel_editing()">
 		</form>
 	</div>

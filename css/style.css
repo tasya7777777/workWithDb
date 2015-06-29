@@ -29,7 +29,7 @@ select {
 	background: -webkit-linear-gradient(#fff, #999);
 	background: -o-linear-gradient(#fff, #999);
 }
-.smokeclass{
+.greyBackclass{
 	display:none;
 	position:absolute;
 	top:-30px;

@@ -73,8 +73,7 @@
 		echo "</table>";
 	?>
 </div>
-	<button id="btn_popup">popup</button>
-    <div id="smoke" class="smokeclass"></div>
+    <div id="greyBack" class="greyBackclass"></div>
 		<div id="popup" class="popupclass">
 			<div id="popup_bar" class="popupbarclass" >Title<span id="btn_close" class="bntcloseclass">[X]</span></div>
 			<p>Popup Window.<br>Press ESC to close.</p>

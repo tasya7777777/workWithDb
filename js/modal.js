@@ -3,10 +3,10 @@ function edit_modall(){
 	var popup = document.getElementById("popup");
 	var popup_bar = document.getElementById("popup_bar");
 	var btn_close = document.getElementById("btn_close");
-	var smoke = document.getElementById("smoke");
+	var greyBack = document.getElementById("greyBack");
 	
-	// smoke
-    spreadSmoke(true);
+	// greyBack
+    spreadgreyBack(true);
     // reset div position
    	popup.style.width = "500px";
     popup.style.height = "300px";
@@ -51,18 +51,18 @@ function edit_modall(){
 	 	 
 	  btn_close.onclick = function(e){
 		popup.style.display = "none";
-		smoke.style.display = "none";
+		greyBack.style.display = "none";
 	  }
 	 
 	  window.onresize = function(e){
-		spreadSmoke();
+		spreadgreyBack();
 	  }
   
 	}
 	
-function spreadSmoke(flg){
-	var smoke = document.getElementById("smoke");
-    smoke.style.width = window.outerWidth  + "px";
-    smoke.style.height = window.outerHeight  + "px";
-    if (flg != undefined && flg == true) smoke.style.display = "block";
+function spreadgreyBack(flg){
+	var greyBack = document.getElementById("greyBack");
+    greyBack.style.width = window.outerWidth  + "px";
+    greyBack.style.height = window.outerHeight  + "px";
+    if (flg != undefined && flg == true) greyBack.style.display = "block";
   }

@@ -51,7 +51,7 @@ function edit_modall(action, user, u_id){
    	popup.style.width = "400px";
     popup.style.height = "350px";
 	popup.style.display = "block";
-	popup.style.position = 'absolute';
+	popup.style.position = 'fixed';
 	popup.style.left= "40%";
 	popup.style.top= "30%";
 	
@@ -75,7 +75,7 @@ function edit_modall(action, user, u_id){
 	  }
 	 
 	  function popupMove(e){
-		popup.style.position = 'absolute';
+		popup.style.position = 'fixed';
 		var top = e.clientY - offset.y;
 		var left = e.clientX - offset.x;
 		popup.style.top = top + 'px';
@@ -118,30 +118,4 @@ function spreadgreyBack(flg){
 	var hid = document.getElementById("hidden_action");
 	hid.value = popup_bar.childNodes[1].nodeValue;
 	
-}
-
- /*$("document").ready(function(){
-	  $(".submit_save").submit(function(){
-		var popup_bar = document.getElementById("popup_bar");
-		var data = {
-		  "action": popup_bar.childNodes[1].nodeValue
-		};
-		data = $(this).serialize() + "&" + $.param(data);
-		alert(data);
-		$.ajax({
-		  type: "POST",
-		  url: "test.php", 
-		  data: data,
-		  cache:false,
-		  dataType: "json",
-		  success: function(data) {
-		  alert("success");
-			}, 
-		  error: function(data){
-			alert('error');
-		  }
-		});
-		return false;
-	  });
-	});*/
- 
+} 

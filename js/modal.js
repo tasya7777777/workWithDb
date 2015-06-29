@@ -1,4 +1,9 @@
 function edit_modall(action, user){
+	var popup = document.getElementById("popup");
+	var popup_bar = document.getElementById("popup_bar");
+	var btn_close = document.getElementById("btn_close");
+	var greyBack = document.getElementById("greyBack");
+	
 	if(action == 'change'){
 		var user_name = document.getElementById("user_name");
 		var user_login = document.getElementById("user_login");
@@ -12,11 +17,14 @@ function edit_modall(action, user){
 		user_city.value = user['city'];
 		user_region.value = user['region'];
 		user_dist.value = user['distinctt'];
+				
+		var textnode = document.createTextNode("Edit record");
+		popup_bar.appendChild(textnode);
+	}else if(action == 'add'){
+		var textnode = document.createTextNode("Add record");
+		popup_bar.appendChild(textnode);
 	}
-	var popup = document.getElementById("popup");
-	var popup_bar = document.getElementById("popup_bar");
-	var btn_close = document.getElementById("btn_close");
-	var greyBack = document.getElementById("greyBack");
+	
 	
 	// greyBack
     spreadgreyBack(true);

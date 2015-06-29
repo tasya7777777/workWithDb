@@ -85,7 +85,7 @@
 			<p>Region:</p><input type="text" id="user_region" name="region">
 			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />
 			<input type="submit" name="button_change" value="Save">
-			<input type="button" name="cansel" value="Cansel">
+			<input type="button" name="cancel" value="Cancel">
 		</form>
 	</div>
 </div>

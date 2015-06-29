@@ -99,7 +99,15 @@ function spreadgreyBack(flg){
 }
  
  function save_record(){
-	 alert("save");
+	 
+	 var popup_bar = document.getElementById("popup_bar");
+	 if(popup_bar.childNodes[1].nodeValue == "Edit record"){
+		 console.log("update ajax");
+	 }else{
+		  console.log("insert ajax");
+	 }
+	 
+	
 	
  }
  

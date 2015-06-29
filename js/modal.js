@@ -62,7 +62,7 @@ function edit_modall(){
 	
 function spreadgreyBack(flg){
 	var greyBack = document.getElementById("greyBack");
-    greyBack.style.width = window.outerWidth  + "px";
-    greyBack.style.height = window.outerHeight  + "px";
+    greyBack.style.width = document.body.clientWidth + 100 + "px";
+    greyBack.style.height = document.body.clientHeight + 100 + "px";
     if (flg != undefined && flg == true) greyBack.style.display = "block";
   }

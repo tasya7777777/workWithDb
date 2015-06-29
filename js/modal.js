@@ -8,13 +8,12 @@ function edit_modall(){
 	// smoke
     spreadSmoke(true);
     // reset div position
-    //popup.style.top = "4px";
-    //popup.style.left = "4px";
-	popup.style.width = "500px";
+   	popup.style.width = "500px";
     popup.style.height = "300px";
 	popup.style.display = "block";
 	popup.style.position = 'absolute';
 	popup.style.left= "40%";
+	popup.style.top= "30%";
 	
 	var SCROLL_WIDTH = 24;
   
@@ -63,7 +62,7 @@ function edit_modall(){
 	
 function spreadSmoke(flg){
 	var smoke = document.getElementById("smoke");
-    smoke.style.width = window.outerWidth + 100 + "px";
-    smoke.style.height = window.outerHeight + 100 + "px";
+    smoke.style.width = window.outerWidth  + "px";
+    smoke.style.height = window.outerHeight  + "px";
     if (flg != undefined && flg == true) smoke.style.display = "block";
   }

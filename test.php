@@ -6,58 +6,8 @@
 <head>
 	<title>Table</title>
 	<meta charset="utf-8"/>
-	<style>
-		table {
-			border-collapse: collapse; 
-		}
-		tr, td, th {
-			padding: 5px;
-			border: 1px solid black;
-		}
-		select {
-			width: 170px;
-		}
-		.picture {
-			width: 70px;
-			display: inline-block;
-			border: 0.5px solid black;
-		}
-		#overlay, #overlay1 {
-		 visibility: hidden;
-		 position: absolute;
-		 left: 0px;
-		 top: 0px;
-		 width:100%;
-		 height:100%;
-		 text-align:center;
-		 z-index: 1000;
-		}
-		#overlay div, #overlay1 div {
-		 width:300px;
-		 margin: 100px auto;
-		 background-color: #fff;
-		 border:1px solid #000;
-		 padding:15px;
-		 text-align:center;
-		}
-	</style>
 	<link href="css/style.css" rel="stylesheet" type="text/css"/>
-	
-	<script type="text/javascript">
-function edit_modal(id){
-	
-el = document.getElementById(id);
-el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible"; 
-}
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-</script>
-<script src="js/modal.js"></script>
+	<script src="js/modal.js"></script>
 </head>
 <body>
 <?php 
@@ -124,13 +74,10 @@ function drag(ev) {
 	?>
 </div>
 	<button id="btn_popup">popup</button>
-    <div id="smoke" class="smokeclass">...</div>
-	<div class="modalDialog">
+    <div id="smoke" class="smokeclass"></div>
 		<div id="popup" class="popupclass">
 			<div id="popup_bar" class="popupbarclass" >Title<span id="btn_close" class="bntcloseclass">[X]</span></div>
 			<p>Popup Window.<br>Press ESC to close.</p>
 		</div>
-	</div>
-<script src="modal.js"></script>
 </body>
 </html>

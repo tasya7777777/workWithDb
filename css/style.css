@@ -1,46 +1,55 @@
-.modalDialog > div {
- width: 400px;
- 
- margin: 10% auto;
- padding: 5px 20px 13px 20px;
- border-radius: 10px;
- background: #fff;
- background: -moz-linear-gradient(#fff, #999);
- background: -webkit-linear-gradient(#fff, #999);
- background: -o-linear-gradient(#fff, #999);
+table {
+	border-collapse: collapse; 
+}
+
+tr, td, th {
+	padding: 5px;
+	border: 1px solid black;
+}
+
+select {
+	width: 170px;
+}
+
+.picture {
+	width: 70px;
+	display: inline-block;
+	border: 0.5px solid black;
 }
 .popupclass{
-display:none;
-background-color:green;
-position:absolute;
-top:0px;z-index:9999;
-box-shadow: 6px 6px 5px #888888;
-width:300px; 
-height:300px; 
-border-radius:6px;
-border:1px solid #4f4f4f;
+	display:none;
+	background-color:green;
+	position:absolute;
+	top:0px;z-index:9999;
+	box-shadow: 6px 6px 5px #888888;
+	border:1px solid #4f4f4f;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
 }
 .smokeclass{
-display:none;
-position:absolute;
-top:-30px;
-left:-30px;
-opacity:0.3;
-background-color:black;
-z-index:9998
+	display:none;
+	position:absolute;
+	top:-30px;
+	left:-30px;
+	opacity:0.3;
+	background-color:black;
+	z-index:9998
 }
 .popupbarclass{
-width:100%;
-background-color:#aaff66;
-position:relative;
-top:0;
-border-radius:6px 6px 0 0;
-text-align:center;
-height:24px;
-cursor:move
+	width:100%;
+	background-color:#aaff66;
+	position:relative;
+	top:0;
+	border-radius:6px 6px 0 0;
+	text-align:center;
+	height:24px;
+	cursor:move
 }
 .bntcloseclass{
-float:right;
-cursor:pointer;
-padding-right:6px;
+	float:right;
+	cursor:pointer;
+	padding-right:6px;
 }

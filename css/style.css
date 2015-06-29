@@ -54,9 +54,9 @@ select {
 	cursor:pointer;
 	padding-right:6px;
 }
-input:nth-child(15){
-	width: 110px;
-	height: 30px;
+input:nth-child(15), input:nth-child(16){
+	width: 100px;
+	height: 25px;
 }
 p {
 	margin: 2px;

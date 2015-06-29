@@ -110,8 +110,14 @@ function spreadgreyBack(flg){
 	popup.style.display = "none";
 	greyBack.style.display = "none"; 
 }
+ function save_editing(){
+	var popup_bar = document.getElementById("popup_bar");
+	var hid = document.getElementById("hidden_action");
+	hid.value = popup_bar.childNodes[1].nodeValue;
+	
+}
 
- $("document").ready(function(){
+ /*$("document").ready(function(){
 	  $(".submit_save").submit(function(){
 		var popup_bar = document.getElementById("popup_bar");
 		var data = {
@@ -134,5 +140,5 @@ function spreadgreyBack(flg){
 		});
 		return false;
 	  });
-	});
+	});*/
  

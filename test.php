@@ -43,9 +43,12 @@
 <br />
 <div><h2>TABLE USERS</h2>
 	<?php
+		print_r($_POST);
 		if(isset($_GET['dell_user']) && !empty($_GET['dell_user'])){
 			$sql = "DELETE FROM userlist WHERE id_u=".$_GET['dell_user'];
 			mysql_query($sql);
+		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] = 'Edit record') && !empty($_POST['action'])){
+			
 		}
 		$sql = "SELECT id_u, ul.name, login, pass, rl.name as city, rl2.name as region, rl3.name as distinctt FROM userlist ul
 		JOIN region_list rl on ul.city=rl.id 
@@ -79,14 +82,15 @@
     <div id="greyBack" class="greyBackclass"></div>
 	<div id="popup" class="popupclass">
 		<div id="popup_bar" class="popupbarclass" ><span id="btn_close" class="bntcloseclass">[X]</span></div>
-		<form action="test.php" method="POST" class="submit_save">
+		<form action="test.php" method="POST">
 			<p>Name:</p><input type="text" id="user_name" name="user_name">
 			<p>Login:</p><input type="text" id="user_login" name="login">
 			<p>Password:</p><input type="text" id="user_pass" name="pass">
 			<p>City:</p><input type="text" id="user_city" name="city">
 			<p>Region:</p><input type="text" id="user_region" name="region">
 			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />
-			<input type="submit" name="button_change" value="Save">
+			<input type="hidden" id="hidden_action" name="hidden_action" value=""/>
+			<input type="submit" name="button_change" value="Save" onclick="save_editing()">
 			<input type="button" name="cancel" value="Cancel" onclick="cancel_editing()">
 		</form>
 	</div>

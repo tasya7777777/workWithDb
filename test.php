@@ -84,8 +84,8 @@
 			<p>City:</p><input type="text" id="user_city" name="city">
 			<p>Region:</p><input type="text" id="user_region" name="region">
 			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />
-			<input type="submit" name="button_change" value="Save">
-			<input type="button" name="cancel" value="Cancel">
+			<input type="submit" name="button_change" value="Save" onclick="save_record()">
+			<input type="button" name="cancel" value="Cancel" onclick="cancel_editing()">
 		</form>
 	</div>
 </div>

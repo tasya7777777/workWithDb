@@ -3,7 +3,10 @@ function edit_modall(action, user){
 	var popup_bar = document.getElementById("popup_bar");
 	var btn_close = document.getElementById("btn_close");
 	var greyBack = document.getElementById("greyBack");
-	
+	if(popup_bar.childNodes[1]){
+			popup_bar.removeChild(popup_bar.childNodes[1]);
+		 }
+		 
 	if(action == 'change'){
 		var user_name = document.getElementById("user_name");
 		var user_login = document.getElementById("user_login");
@@ -17,7 +20,7 @@ function edit_modall(action, user){
 		user_city.value = user['city'];
 		user_region.value = user['region'];
 		user_dist.value = user['distinctt'];
-				
+		
 		var textnode = document.createTextNode("Edit record");
 		popup_bar.appendChild(textnode);
 	}else if(action == 'add'){
@@ -87,3 +90,16 @@ function spreadgreyBack(flg){
     greyBack.style.height = document.body.clientHeight + 100 + "px";
     if (flg != undefined && flg == true) greyBack.style.display = "block";
   }
+  
+ function cancel_editing(){
+	var popup = document.getElementById("popup");
+	var greyBack = document.getElementById("greyBack");
+	popup.style.display = "none";
+	greyBack.style.display = "none"; 
+}
+ 
+ function save_record(){
+	 alert("save");
+	
+ }
+ 

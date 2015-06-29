@@ -41,7 +41,7 @@
 		 text-align:center;
 		}
 	</style>
-	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<link href="css/style.css" rel="stylesheet" type="text/css"/>
 	
 	<script type="text/javascript">
 function edit_modal(id){
@@ -57,7 +57,7 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 </script>
-<script src="modal.js"></script>
+<script src="js/modal.js"></script>
 </head>
 <body>
 <?php 
@@ -105,10 +105,10 @@ function drag(ev) {
 		while($user = mysql_fetch_assoc($query_users)){	
 			echo "<tr>
 					<td class='picture'>
-						<img id='change_id' src='change.gif'>
-						<img id='add_id' src='plus.gif'>
+						<img id='change_id' src='pictures/change.gif'>
+						<img id='add_id' src='pictures/plus.gif'>
 						<a href='".$_SERVER['PHP_SELF']."?dell_user=".$user['id_u']."'onclick=\"if(!confirm('Запис буде видалено!')){return false;}\">
-							<img src='del.gif'>
+							<img src='pictures/del.gif'>
 						</a>
 					</td>
 					<td>".$user['name']."</td>

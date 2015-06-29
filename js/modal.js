@@ -24,6 +24,19 @@ function edit_modall(action, user){
 		var textnode = document.createTextNode("Edit record");
 		popup_bar.appendChild(textnode);
 	}else if(action == 'add'){
+		var user_name = document.getElementById("user_name");
+		var user_login = document.getElementById("user_login");
+		var user_pass = document.getElementById("user_pass");
+		var user_city = document.getElementById("user_city");
+		var user_region = document.getElementById("user_region");
+		var user_dist = document.getElementById("user_dist");
+		user_name.value = "";
+		user_login.value = "";
+		user_pass.value = "";
+		user_city.value = "";
+		user_region.value = "";
+		user_dist.value = "";
+		
 		var textnode = document.createTextNode("Add record");
 		popup_bar.appendChild(textnode);
 	}

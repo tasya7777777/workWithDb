@@ -56,8 +56,8 @@
 		while($user = mysql_fetch_assoc($query_users)){	
 			echo "<tr>
 					<td class='picture'>
-						<img id='change_id".$count."' src='pictures/change.gif' onclick='edit_modall()'>
-						<img id='add_id".$count."' src='pictures/plus.gif' onclick='edit_modall()'>
+						<img id='change_id".$count."' src='pictures/change.gif' onclick='edit_modall(\"change\", "; echo json_encode($user); echo ")'>
+						<img id='add_id".$count."' src='pictures/plus.gif' onclick='edit_modall(\"add\")'>
 						<a href='".$_SERVER['PHP_SELF']."?dell_user=".$user['id_u']."'onclick=\"if(!confirm('Запис буде видалено!')){return false;}\">
 							<img src='pictures/del.gif'>
 						</a>
@@ -78,12 +78,12 @@
 	<div id="popup" class="popupclass">
 		<div id="popup_bar" class="popupbarclass" >Edit record<span id="btn_close" class="bntcloseclass">[X]</span></div>
 		<form action="" method="POST">
-			<p>Name:</p><input type="text" name="user_name">
-			<p>Login:</p><input type="text" name="login">
-			<p>Password:</p><input type="text" name="pass">
-			<p>City:</p><input type="text" name="city">
-			<p>Region:</p><input type="text" name="region">
-			<p>Distinct:</p><input type="text" name="dist"><br /><br />
+			<p>Name:</p><input type="text" id="user_name" name="user_name">
+			<p>Login:</p><input type="text" id="user_login" name="login">
+			<p>Password:</p><input type="text" id="user_pass" name="pass">
+			<p>City:</p><input type="text" id="user_city" name="city">
+			<p>Region:</p><input type="text" id="user_region" name="region">
+			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />
 			<input type="submit" name="button_change" value="Save">
 			<input type="button" name="cansel" value="Cansel">
 		</form>

@@ -47,13 +47,18 @@
 		
 		if(isset($_GET['dell_user']) && !empty($_GET['dell_user'])){
 			$sql = "DELETE FROM userlist WHERE id_u=".$_GET['dell_user'];
+			echo "<input type=\"hidden\" name=\"already_showed\" value=\"true\"/>";
 			mysql_query($sql);
 		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] == 'Edit record')){
 			$sql = "UPDATE userlist set name = \"".$_POST['user_name']."\", login =\"".$_POST['login']."\", pass =\"".$_POST['pass']."\", city=3 where id_u =".$_POST['user_id'];
+			echo "<input type=\"hidden\" name=\"already_showed\" value=\"true\"/>";
 			mysql_query($sql);
 		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] == 'Add record')){
 			$sql = "INSERT INTO userlist (name, login, pass, city) VALUES(\"".$_POST['user_name']."\",\"".$_POST['login']."\",\"".$_POST['pass']."\",".$_POST['city'].")";
+			echo "<input type=\"hidden\" name=\"already_showed\" value=\"true\"/>";
 			mysql_query($sql);
+		}else{
+			echo "<input type=\"hidden\" name=\"already_showed\" value=\"false\"/>";
 		}
 		
 		$sql = "SELECT id_u, ul.name, login, pass, rl.name as city, rl2.name as region, rl3.name as distinctt FROM userlist ul
@@ -102,5 +107,15 @@
 		</form>
 	</div>
 </div>
+<script>
+(function() {
+   if(document.getElementsByName("already_showed")[0].value=='true'){
+	   var t_user = document.getElementById('table_users');
+	   t_user.style.visibility = "visible";
+	   document.getElementsByName("already_showed")[0].value='false';
+   }
+
+})();
+</script>
 </body>
 </html>

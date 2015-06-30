@@ -1,11 +1,12 @@
 <?php
 include_once('database.php');
 
-mysql_query("CREATE TABLE IF NOT EXISTS t_sprav(id INT(11) NOT NULL AUTO_INCREMENT, 
+
+$query = mysql_query("CREATE TABLE IF NOT EXISTS t_sprav(id INT(11) NOT NULL AUTO_INCREMENT, 
                                    topic INT(11), 
                                    Text_values VARCHAR(30), 
                                    PRIMARY KEY (id))",$connect);
-	   
+
 $insTSprav = "INSERT INTO t_sprav (topic, Text_values) VALUES(11,'open'),
 															 (22,'in progress'),
 															 (33,'closed'),
@@ -13,7 +14,9 @@ $insTSprav = "INSERT INTO t_sprav (topic, Text_values) VALUES(11,'open'),
 															 (55,'verified'),
 															 (66,'successes')"; 
 
-mysql_query($insTSprav);
+begin();
+$result = mysql_query($insTSprav);
+trans($result);
 
 mysql_query("CREATE TABLE IF NOT EXISTS region_list(id INT(11) NOT NULL AUTO_INCREMENT, 
 													name VARCHAR(30), 
@@ -35,7 +38,9 @@ $insRegion= "INSERT INTO region_list (name, parent_id) VALUES('Lvivska',NULL),
 															 ('Chernivetska',NULL),
 															 ('Chernivetskiy',13),
 															 ('Chernitsi',14)"; 
-mysql_query($insRegion);
+begin();
+$result2 = mysql_query($insRegion);
+trans($result2);
 
 mysql_query("CREATE TABLE IF NOT EXISTS userlist(id_u INT(11) NOT NULL AUTO_INCREMENT, 
                                     name VARCHAR(30), 
@@ -59,8 +64,10 @@ $insUser = "INSERT INTO userlist (name, login, pass, city) VALUES('Mike','mike',
 																('Simba','simba','pass12',15),
 																('Jira','jira','pass13',12),
 																('Lana','lana','pass14',9)";
-mysql_query($insUser);
-									
+begin();
+$result2 = mysql_query($insUser);
+trans($result2);
+
 mysql_query("CREATE TABLE IF NOT EXISTS goods(id INT(11) NOT NULL AUTO_INCREMENT, 
 											id_user INT(11), 
 											tema VARCHAR(30), 
@@ -84,5 +91,29 @@ $insGoods = "INSERT INTO goods (id_user, tema, meil, Statys_m) VALUES(5,'About',
 																	 (12,'Winter','near',3),
 																	 (13,'Tricky','mouse',4),
 																	 (14,'Good','time',5)"; 
-mysql_query($insGoods);
+begin();
+$result3 = mysql_query($insGoods);
+trans($result3);
+
+function begin() {
+	mysql_query(“BEGIN”);
+}
+
+function commit() {
+	mysql_query(“COMMIT”);
+}
+
+function rollback() {
+	mysql_query(“ROLLBACK”);
+}
+function trans($result) {
+	if(!$result) {
+		rollback(); 
+		echo “Rolled back”;
+		exit;
+	} else {
+		commit(); 
+		echo “Transaction completed”;
+	}
+}
 ?>

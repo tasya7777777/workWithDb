@@ -55,8 +55,7 @@ select {
 	padding-right:6px;
 }
 input:nth-last-child(-n+2){
-	width: 100px;
-	height: 25px;
+	padding: 2px 6px;
 	box-shadow: 6px 6px 5px #888888;
 	border:1px solid #4f4f4f;
 	border-radius: 5px;
@@ -71,4 +70,16 @@ p {
 input {
 	border-radius: 5px;
 	width: 130px;
+}
+#but_show {
+	width: 200px;
+	margin: 25px;
+	padding: 10px 20px;
+	border:1px solid #4f4f4f;
+	border-radius: 5px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+	font-size: 16px;
 }

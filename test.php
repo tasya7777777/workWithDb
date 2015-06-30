@@ -7,7 +7,6 @@
 	<title>Table</title>
 	<meta charset="utf-8"/>
 	<link href="css/style.css" rel="stylesheet" type="text/css"/>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="js/modal.js"></script>
 	
 </head>
@@ -40,8 +39,10 @@
 	}
 	echo "</table>";
 ?>
-<br />
-<div><h2>TABLE USERS</h2>
+<input type='button' id='but_show' value='Show userlist table' onclick="show_table()"/>
+
+<div id='table_users' style='visibility: hidden;'>
+	<h2>TABLE USERS</h2>
 	<?php
 		
 		if(isset($_GET['dell_user']) && !empty($_GET['dell_user'])){
@@ -88,9 +89,9 @@
 	<div id="popup" class="popupclass">
 		<div id="popup_bar" class="popupbarclass" ><span id="btn_close" class="bntcloseclass"><img src='pictures/close.png' width='20px'/></span></div>
 		<form action="test.php" method="POST">
-			<p>Name:</p><input type="text" id="user_name" name="user_name">
-			<p>Login:</p><input type="text" id="user_login" name="login">
-			<p>Password:</p><input type="text" id="user_pass" name="pass">
+			<p>Name:</p><input type="text" id="user_name" name="user_name" required/>
+			<p>Login:</p><input type="text" id="user_login" name="login" required/>
+			<p>Password:</p><input type="password" id="user_pass" name="pass" required/>
 			<p>City:</p><input type="text" id="user_city" name="city">
 			<p>Region:</p><input type="text" id="user_region" name="region">
 			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />

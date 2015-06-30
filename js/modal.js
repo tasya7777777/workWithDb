@@ -1,3 +1,11 @@
+function show_table(){
+	var t_user = document.getElementById('table_users');
+	if(t_user.style.visibility == "hidden"){
+		t_user.style.visibility = "visible";
+	} else {
+		t_user.style.visibility = "hidden";
+	}
+}
 function edit_modall(action, user, u_id){
 
 	var popup = document.getElementById("popup");
@@ -117,5 +125,4 @@ function spreadgreyBack(flg){
 	var popup_bar = document.getElementById("popup_bar");
 	var hid = document.getElementById("hidden_action");
 	hid.value = popup_bar.childNodes[1].nodeValue;
-	
-} 
+}

@@ -8,7 +8,6 @@
 	<meta charset="utf-8"/>
 	<link href="css/style.css" rel="stylesheet" type="text/css"/>
 	<script src="js/modal.js"></script>
-	
 </head>
 <body>
 <div>
@@ -68,7 +67,7 @@
 		$query_users = mysql_query($sql);
 		$count = 1;
 		echo "<table width='50%'>";
-		echo "<tr><th></th><th>name</th><th><b>login</b></th><th>password</th><th>distinct</th><th>region</th><th>city</th></tr>";
+		echo "<tr><th></th><th>name</th><th><b>login</b></th><th>password</th><th>city</th></tr>";
 		while($user = mysql_fetch_assoc($query_users)){	
 			echo "<tr>
 					<td class='picture'>
@@ -81,8 +80,6 @@
 					<td>".$user['name']."</td>
 					<td>".$user['login']."</td>
 					<td>".$user['pass']."</td>
-					<td>".$user['distinctt']."</td>
-					<td>".$user['region']."</td>
 					<td>".$user['city']."</td>
 				  </tr>";
 			$count++;
@@ -108,9 +105,7 @@
 			}
 			echo "</select>";
 			?>
-			
-			<p>Region:</p><input type="text" id="user_region" name="region">
-			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />
+			<br /><br />
 			<input type="hidden" id="hidden_action" name="hidden_action" value=""/>
 			<input type="hidden" id="user_id" name="user_id" value=""/>
 			<input type="submit" name="button_change" value="Save" onclick="save_editing()">

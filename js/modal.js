@@ -33,9 +33,6 @@ function edit_modall(action, user, u_id){
 		user_pass.value = user['pass'];
 		user_city.text = user['city'];
 				
-		user_region.value = user['region'];
-		user_dist.value = user['distinctt'];
-		
 		var textnode = document.createTextNode("Edit record");
 		popup_bar.appendChild(textnode);
 	}else if(action == 'add'){
@@ -47,8 +44,6 @@ function edit_modall(action, user, u_id){
 		user_name.value = "";
 		user_login.value = "";
 		user_pass.value = "";
-		user_region.value = "";
-		user_dist.value = "";
 		
 		var textnode = document.createTextNode("Add record");
 		popup_bar.appendChild(textnode);
@@ -59,7 +54,7 @@ function edit_modall(action, user, u_id){
     spreadgreyBack(true);
     // reset div position
    	popup.style.width = "400px";
-    popup.style.height = "350px";
+    popup.style.height = "270px";
 	popup.style.display = "block";
 	popup.style.position = 'fixed';
 	popup.style.left= "40%";

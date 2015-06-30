@@ -22,13 +22,17 @@ function edit_modall(action, user, u_id){
 		var user_name = document.getElementById("user_name");
 		var user_login = document.getElementById("user_login");
 		var user_pass = document.getElementById("user_pass");
-		var user_city = document.getElementById("user_city");
+		
+		var elt = document.getElementById("select_city");
+		var user_city = elt.options[elt.selectedIndex];
+		
 		var user_region = document.getElementById("user_region");
 		var user_dist = document.getElementById("user_dist");
 		user_name.value = user['name'];
 		user_login.value = user['login'];
 		user_pass.value = user['pass'];
 		user_city.value = user['city'];
+		
 		user_region.value = user['region'];
 		user_dist.value = user['distinctt'];
 		
@@ -38,13 +42,13 @@ function edit_modall(action, user, u_id){
 		var user_name = document.getElementById("user_name");
 		var user_login = document.getElementById("user_login");
 		var user_pass = document.getElementById("user_pass");
-		var user_city = document.getElementById("user_city");
+		//var user_city = document.getElementsByName("user_city");
 		var user_region = document.getElementById("user_region");
 		var user_dist = document.getElementById("user_dist");
 		user_name.value = "";
 		user_login.value = "";
 		user_pass.value = "";
-		user_city.value = "";
+		//user_city.value = "";
 		user_region.value = "";
 		user_dist.value = "";
 		

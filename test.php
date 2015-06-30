@@ -50,11 +50,11 @@
 			echo "<input type=\"hidden\" name=\"already_showed\" value=\"true\"/>";
 			mysql_query($sql);
 		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] == 'Edit record')){
-			$sql = "UPDATE userlist set name = \"".$_POST['user_name']."\", login =\"".$_POST['login']."\", pass =\"".$_POST['pass']."\", city=3 where id_u =".$_POST['user_id'];
+			$sql = "UPDATE userlist set name = \"".$_POST['user_name']."\", login =\"".$_POST['login']."\", pass =\"".$_POST['pass']."\", city=".$_POST['user_city']." where id_u =".$_POST['user_id'];
 			echo "<input type=\"hidden\" name=\"already_showed\" value=\"true\"/>";
 			mysql_query($sql);
 		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] == 'Add record')){
-			$sql = "INSERT INTO userlist (name, login, pass, city) VALUES(\"".$_POST['user_name']."\",\"".$_POST['login']."\",\"".$_POST['pass']."\",".$_POST['city'].")";
+			$sql = "INSERT INTO userlist (name, login, pass, city) VALUES(\"".$_POST['user_name']."\",\"".$_POST['login']."\",\"".$_POST['pass']."\",".$_POST['user_city'].")";
 			echo "<input type=\"hidden\" name=\"already_showed\" value=\"true\"/>";
 			mysql_query($sql);
 		}else{
@@ -97,7 +97,17 @@
 			<p>Name:</p><input type="text" id="user_name" name="user_name" required/>
 			<p>Login:</p><input type="text" id="user_login" name="login" required/>
 			<p>Password:</p><input type="password" id="user_pass" name="pass" required/>
-			<p>City:</p><input type="text" id="user_city" name="city">
+			<p>City:</p>
+			<?php 
+			$sql = "SELECT * FROM region_list where id not in(select parent_id from region_list where parent_id is not null)";
+			$query_city = mysql_query($sql);
+			echo "<select id='select_city' name=\"user_city\">";
+			while($city = mysql_fetch_assoc($query_city)){	
+				echo "<option value=\"".$city['id']."\">".$city['name']."</option>";
+			}
+			echo "</select>";
+			?>
+			
 			<p>Region:</p><input type="text" id="user_region" name="region">
 			<p>Distinct:</p><input type="text" id="user_dist" name="dist"><br /><br />
 			<input type="hidden" id="hidden_action" name="hidden_action" value=""/>

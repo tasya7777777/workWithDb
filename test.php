@@ -1,7 +1,7 @@
 <?php
 
  require_once('database.php');
- if (isset($_POST['hidden_action'])){ 
+ if (isset($_POST['hidden_action']) or isset($_GET['dell_user'])){ 
     	header("Location:".$_SERVER['PHP_SELF'].'?already_showed=true');  
     }
  

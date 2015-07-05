@@ -130,7 +130,7 @@
 			$sql = "SELECT DISTINCT name FROM region_list where id not in(select parent_id from region_list where parent_id is not null)";
 			$query_city = mysql_query($sql);
 			echo "<select id='select_city' name=\"user_city\" onchange=\"getLocations(this, 'city')\" required>";
-			
+			echo "<option value=''></option>";
 			while($city = mysql_fetch_assoc($query_city)){	
 				echo "<option value=\"".$city['name']."\">".$city['name']."</option>";
 			}

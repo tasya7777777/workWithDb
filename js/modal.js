@@ -26,16 +26,33 @@ function edit_modall(action, user, u_id){
 		var elt = document.getElementById("select_city");
 		var user_city = elt.options[elt.selectedIndex];
 		
-		elt = document.getElementById("user_region");
+		var elt1 = document.getElementById("user_region");
 		var user_region = elt.options[elt.selectedIndex];
 
-		elt = document.getElementById("user_dist");
+		var elt2 = document.getElementById("user_dist");
 		var user_dist = elt.options[elt.selectedIndex];
 
 		user_name.value = user['name'];
 		user_login.value = user['login'];
 		user_pass.value = user['pass'];
-		user_city.text = user['city'];
+		
+			var opt = document.createElement('option');
+			opt.value = user['region'];
+			opt.innerHTML = user['region'];
+			elt1.appendChild(opt);
+			opt = document.createElement('option');
+			opt.value = user['distinctt'];
+			opt.innerHTML = user['distinctt'];
+			elt2.appendChild(opt);
+		elt.value = user['city'];
+		elt1.value = user['region'];
+		elt2.value = user['distinctt'];
+		
+		elt.text = user['city'];
+		elt1.text = user['region'];
+		elt2.text = user['distinctt'];
+		elt1.disabled = '';
+		elt2.disabled = '';
 		//user_region.text = user['region'];
 		//user_dist.text = user['distinctt'];
 				
@@ -158,20 +175,26 @@ function getLocations(location_name, type){
 			if(type == 'city'){
 				res = document.getElementById("user_region");
 				res.disabled = '';
+				var dist = document.getElementById("user_dist");
+				dist.disabled = 'disabled';
+				//remove all options to avoid duplicates
+				var reg = document.getElementById("user_region");
+				reg.value = '';
+				reg.text = '';
 			} else if (type == 'region'){
 				res = document.getElementById("user_dist");
 				res.disabled = '';
+				//remove all options to avoid duplicates
+				var dis = document.getElementById("user_dist");
+				dis.value = '';
+				dis.text = '';
 			}
-		 
-			//remove all options to avoid duplicates
-			var length = res.options.length;
-			for (i = 0; i < length; i++) {
-				res.options[i] = null;
-			}
+			//clear options
+			res.options.length = 0;
 			//create new options
-			//var opt = document.createElement('option');
-			//opt.value = '';
-			//res.appendChild(opt);
+			var opt = document.createElement('option');
+			opt.value = '';
+			res.appendChild(opt);
 			var obj = JSON.parse(xmlhttp.responseText);
 		 
 			for(var loc in obj['res']) {

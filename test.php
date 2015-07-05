@@ -137,12 +137,12 @@
 			echo "</select>";
 			?>
 			<p>Region:</p>
-			<select id='user_region' name="region" disabled=\"disabled\" onchange="getLocations(this, 'region')" >
+			<select id='user_region' name="region" disabled=\"disabled\" onchange="getLocations(this, 'region')"  required>
 				
 			</select>
 			
 			<p>Distinct:</p>
-			<select id='user_dist' name="dist" disabled=\"disabled\">
+			<select id='user_dist' name="dist" disabled=\"disabled\" required>
 				
 			</select>
 			<br /><br />

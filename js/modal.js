@@ -16,65 +16,60 @@ function edit_modall(action, user, u_id){
 	user_id.value = u_id;
 	if(popup_bar.childNodes[1]){
 			popup_bar.removeChild(popup_bar.childNodes[1]);
-		 }
+	}
 		 
 	if(action == 'change'){
 		var user_name = document.getElementById("user_name");
 		var user_login = document.getElementById("user_login");
 		var user_pass = document.getElementById("user_pass");
-		
-		var elt = document.getElementById("select_city");
-		var user_city = elt.options[elt.selectedIndex];
-		
-		var elt1 = document.getElementById("user_region");
-		var user_region = elt.options[elt.selectedIndex];
-
-		var elt2 = document.getElementById("user_dist");
-		var user_dist = elt.options[elt.selectedIndex];
-
 		user_name.value = user['name'];
 		user_login.value = user['login'];
 		user_pass.value = user['pass'];
 		
-			var opt = document.createElement('option');
+		var city = document.getElementById("select_city");
+		var reg = document.getElementById("user_region");
+		var dist = document.getElementById("user_dist");
+		//create options with value that already inserted into db
+		var opt = document.createElement('option');
 			opt.value = user['region'];
 			opt.innerHTML = user['region'];
-			elt1.appendChild(opt);
-			opt = document.createElement('option');
+			reg.appendChild(opt);
+		opt = document.createElement('option');
 			opt.value = user['distinctt'];
 			opt.innerHTML = user['distinctt'];
-			elt2.appendChild(opt);
-		elt.value = user['city'];
-		elt1.value = user['region'];
-		elt2.value = user['distinctt'];
-		
-		elt.text = user['city'];
-		elt1.text = user['region'];
-		elt2.text = user['distinctt'];
-		elt1.disabled = '';
-		elt2.disabled = '';
-		//user_region.text = user['region'];
-		//user_dist.text = user['distinctt'];
-				
+			dist.appendChild(opt);
+		//set values
+		city.value = user['city'];
+		city.text = user['city'];
+		reg.value = user['region'];
+		reg.text = user['region'];
+		dist.value = user['distinctt'];
+		dist.text = user['distinctt'];
+		//enable to give the ability to pass the values to db
+		reg.disabled = '';
+		dist.disabled = '';
+					
 		var textnode = document.createTextNode("Edit record");
 		popup_bar.appendChild(textnode);
+		
 	}else if(action == 'add'){
 		var user_name = document.getElementById("user_name");
 		var user_login = document.getElementById("user_login");
 		var user_pass = document.getElementById("user_pass");
-		var elt = document.getElementById("select_city");
-		var user_city = elt.options[elt.selectedIndex];
-		elt = document.getElementById("user_region");
-		var user_region = elt.options[elt.selectedIndex];
-		elt = document.getElementById("user_dist");
-		var user_dist = elt.options[elt.selectedIndex];
 		user_name.value = "";
 		user_login.value = "";
 		user_pass.value = "";
-		//user_city.text = "";
-		//user_region.text = "";
-		//user_dist.text = "";
 		
+		var city = document.getElementById("select_city");
+		var reg = document.getElementById("user_region");
+		var dist = document.getElementById("user_dist");		
+		city.text = "";
+		city.value = '';
+		reg.text = "";
+		reg.value = '';
+		dist.text = "";
+		dist.value = '';
+			
 		var textnode = document.createTextNode("Add record");
 		popup_bar.appendChild(textnode);
 	}

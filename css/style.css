@@ -57,13 +57,16 @@ input:nth-last-child(-n+2){
 	background: -moz-linear-gradient(#fff, #999);
 	background: -webkit-linear-gradient(#fff, #999);
 	background: -o-linear-gradient(#fff, #999);
+	background-color: red;
 }
 p {
 	margin: 2px;
 }
 input, select {
 	border-radius: 5px;
-	width: 130px;
+	width: 140px;
+	box-shadow: 3px 3px 5px #888888;
+	border:1px solid #4f4f4f;
 }
 #but_show {
 	width: 200px;

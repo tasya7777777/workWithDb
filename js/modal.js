@@ -26,12 +26,18 @@ function edit_modall(action, user, u_id){
 		var elt = document.getElementById("select_city");
 		var user_city = elt.options[elt.selectedIndex];
 		
-		var user_region = document.getElementById("user_region");
-		var user_dist = document.getElementById("user_dist");
+		elt = document.getElementById("user_region");
+		var user_region = elt.options[elt.selectedIndex];
+
+		elt = document.getElementById("user_dist");
+		var user_dist = elt.options[elt.selectedIndex];
+
 		user_name.value = user['name'];
 		user_login.value = user['login'];
 		user_pass.value = user['pass'];
 		user_city.text = user['city'];
+		//user_region.text = user['region'];
+		//user_dist.text = user['distinctt'];
 				
 		var textnode = document.createTextNode("Edit record");
 		popup_bar.appendChild(textnode);
@@ -39,11 +45,18 @@ function edit_modall(action, user, u_id){
 		var user_name = document.getElementById("user_name");
 		var user_login = document.getElementById("user_login");
 		var user_pass = document.getElementById("user_pass");
-		var user_region = document.getElementById("user_region");
-		var user_dist = document.getElementById("user_dist");
+		var elt = document.getElementById("select_city");
+		var user_city = elt.options[elt.selectedIndex];
+		elt = document.getElementById("user_region");
+		var user_region = elt.options[elt.selectedIndex];
+		elt = document.getElementById("user_dist");
+		var user_dist = elt.options[elt.selectedIndex];
 		user_name.value = "";
 		user_login.value = "";
 		user_pass.value = "";
+		//user_city.text = "";
+		//user_region.text = "";
+		//user_dist.text = "";
 		
 		var textnode = document.createTextNode("Add record");
 		popup_bar.appendChild(textnode);
@@ -54,7 +67,7 @@ function edit_modall(action, user, u_id){
     spreadgreyBack(true);
     // reset div position
    	popup.style.width = "400px";
-    popup.style.height = "270px";
+    popup.style.height = "340px";
 	popup.style.display = "block";
 	popup.style.position = 'fixed';
 	popup.style.left= "40%";
@@ -112,14 +125,104 @@ function spreadgreyBack(flg){
     if (flg != undefined && flg == true) greyBack.style.display = "block";
   }
   
- function cancel_editing(){
+function cancel_editing(){
 	var popup = document.getElementById("popup");
 	var greyBack = document.getElementById("greyBack");
 	popup.style.display = "none";
 	greyBack.style.display = "none"; 
 }
- function save_editing(){
+function save_editing(){
 	var popup_bar = document.getElementById("popup_bar");
 	var hid = document.getElementById("hidden_action");
 	hid.value = popup_bar.childNodes[1].nodeValue;
+}
+
+function getLocations(location_name, type){
+	
+	var data = {
+	  "location_name" : location_name.options[location_name.selectedIndex].innerHTML
+	};
+
+	var xmlhttp;
+
+	if (window.XMLHttpRequest){// for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	} else {// for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function(){
+		
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+		    
+			var res;
+			if(type == 'city'){
+				res = document.getElementById("user_region");
+				res.disabled = '';
+			} else if (type == 'region'){
+				res = document.getElementById("user_dist");
+				res.disabled = '';
+			}
+		 
+			//remove all options to avoid duplicates
+			var length = res.options.length;
+			for (i = 0; i < length; i++) {
+				res.options[i] = null;
+			}
+			//create new options
+			//var opt = document.createElement('option');
+			//opt.value = '';
+			//res.appendChild(opt);
+			var obj = JSON.parse(xmlhttp.responseText);
+		 
+			for(var loc in obj['res']) {
+				var opt = document.createElement('option');
+				opt.value = obj['res'][loc];
+				opt.innerHTML = obj['res'][loc];
+				res.appendChild(opt);
+			}
+		}
+	}
+	jsonData = JSON.stringify(data);
+	xmlhttp.open("POST","location.php");
+	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xmlhttp.send('json=' + jsonData);
+
+	/*$.ajax({
+	  type: "POST",
+	  url: "location.php", 
+	  data: data,
+	  cache:false,
+	  dataType: "json",
+	  success: function(responsedata) {
+		  var res;
+		  if(type == 'city'){
+			  res = document.getElementById("user_region");
+			  res.disabled = '';
+		  }else if(type == 'region'){
+			  res = document.getElementById("user_dist");
+			  res.disabled = '';
+		  }
+		
+			//remove all options to avoid duplicates
+			var length = res.options.length;
+			for (var i = 0; i < length; i++) {
+			  res.options[i] = null;
+			}
+			//create new options
+			var opt = document.createElement('option');
+			opt.value = '';
+			res.appendChild(opt);
+			for(var loc in responsedata['res']) {
+				var opt = document.createElement('option');
+				opt.value = responsedata['res'][loc];
+				opt.innerHTML = responsedata['res'][loc];
+				res.appendChild(opt);
+			}
+		}, 
+	  error: function(responsedata){
+		  
+		  alert(responsedata);
+		alert('error');
+	  }
+	});	*/		
 }

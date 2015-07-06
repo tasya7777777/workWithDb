@@ -2,7 +2,7 @@
 
  require_once('database.php');
  if (isset($_POST['hidden_action']) or isset($_GET['dell_user'])){ 
-    	header("Location:".$_SERVER['PHP_SELF'].'?already_showed=true');  
+    	//header("Location:".$_SERVER['PHP_SELF'].'?already_showed=true');  
     }
  
 ?>
@@ -12,7 +12,6 @@
 	<title>Table</title>
 	<meta charset="utf-8"/>
 	<link href="css/style.css" rel="stylesheet" type="text/css"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="js/modal.js"></script>
 </head>
 <body>
@@ -58,32 +57,19 @@
 				echo "<script>alert ('Could not delete record!It has relations to another tables.');</script>";
 			}
 		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] == 'Edit record')){
-			$sql = "SELECT id FROM `region_list` rl1 WHERE rl1.name=\"".$_POST['user_city']."\" AND rl1.parent_id = 
+			$sql = "UPDATE userlist SET name = \"".$_POST['user_name']."\", login =\"".$_POST['login']."\", pass =\"".$_POST['pass']."\", city=(SELECT id FROM `region_list` rl1 WHERE rl1.name=\"".$_POST['user_city']."\" AND rl1.parent_id = 
 					(SELECT rl2.id FROM region_list rl2 WHERE rl2.name = \"".$_POST['region']."\" AND rl2.parent_id=
-																(SELECT rl3.id FROM region_list rl3 WHERE rl3.name =\"".$_POST['dist']."\"))" ;
-			
-			$query_city = mysql_query($sql);
-			$city_id_selected = 0;
-			while($city_id = mysql_fetch_assoc($query_city)){	
-				$city_id_selected = $city_id['id'];
-			}
-
-			$sql = "UPDATE userlist SET name = \"".$_POST['user_name']."\", login =\"".$_POST['login']."\", pass =\"".$_POST['pass']."\", city=".$city_id_selected." where id_u =".$_POST['user_id'];
+																(SELECT rl3.id FROM region_list rl3 WHERE rl3.name =\"".$_POST['dist']."\"))) where id_u =".$_POST['user_id'];
 			echo "<input type=\"hidden\" name=\"already_showed\" value=\"true\"/>";
 			mysql_query($sql);
-		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] == 'Add record')){
-			$sql = "SELECT id FROM `region_list` rl1 WHERE rl1.name=\"".$_POST['user_city']."\" AND rl1.parent_id = 
-					(SELECT rl2.id FROM region_list rl2 WHERE rl2.name = \"".$_POST['region']."\" AND rl2.parent_id=
-																(SELECT rl3.id FROM region_list rl3 WHERE rl3.name =\"".$_POST['dist']."\"))" ;
 			
-			$query_city = mysql_query($sql);
-			$city_id_selected = 0;
-			while($city_id = mysql_fetch_assoc($query_city)){	
-				$city_id_selected = $city_id['id'];
-			}
+		}else if(isset($_POST['hidden_action']) && ($_POST['hidden_action'] == 'Add record')){
 
-			$sql = "INSERT INTO userlist (name, login, pass, city) VALUES(\"".$_POST['user_name']."\",\"".$_POST['login']."\",\"".$_POST['pass']."\",".$city_id_selected.")";
+			$sql = "INSERT INTO userlist (name, login, pass, city) VALUES(\"".$_POST['user_name']."\",\"".$_POST['login']."\",\"".$_POST['pass']."\",(SELECT id FROM `region_list` rl1 WHERE rl1.name=\"".$_POST['user_city']."\" AND rl1.parent_id = 
+					(SELECT rl2.id FROM region_list rl2 WHERE rl2.name = \"".$_POST['region']."\" AND rl2.parent_id=
+																(SELECT rl3.id FROM region_list rl3 WHERE rl3.name =\"".$_POST['dist']."\"))))";
 			mysql_query($sql);
+		
 			echo "<input type=\"hidden\" name=\"already_showed\" value=\"true\"/>";
 		}else{
 			echo "<input type=\"hidden\" name=\"already_showed\" value=\"false\"/>";
